@@ -13,10 +13,10 @@ def parse_boxes(boxes):
     levels = list(reversed(levels[:-1]))  # remove label and start from bottom
     width = max(len(l) for l in levels)
 
-    for i in range(int(width / 4) + 1):
+    for i in range(1, width, 4):
         for l in levels:
-            if l[4 * i + 1] != " ":
-                stacks[i].append(l[4 * i + 1])  # index of letter
+            if l[i] != " ":
+                stacks[(i-1)//4].append(l[i]) # index of letter
     return stacks
 
 
