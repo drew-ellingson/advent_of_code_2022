@@ -59,5 +59,4 @@ apply_all(instrs, cm_9000_boxes)
 apply_all(instrs, cm_9001_boxes, p2=True)
 
 print(f'P1 Soln is: {"".join(s[-1] for s in cm_9000_boxes)}')
-
 print(f'P2 Soln is: {"".join(s[-1] for s in cm_9001_boxes)}')
