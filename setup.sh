@@ -1,3 +1,5 @@
+# example usage: sh setup.sh 01
+
 # get cookie by:
 #   1. visiting adventofcode.com
 #   2. logging in
