@@ -4,4 +4,4 @@ This contains python implementation solutions for [advent of code 2022](https://
 
 ### Particular Favorites:
 
-[Day 8 - Treetop Views](day08/readme.md)
+[Day 8 - Treetop Views](day_08/readme.md)
