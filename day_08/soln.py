@@ -28,22 +28,12 @@ class TreeGrid:
 
     def scenic_score(self, x, y):
         curr = self.grid[y][x]
-        try:
-            left_score = x - max([i for i in range(x) if self.grid[y][i] >= curr])
-        except ValueError:
-            left_score = x
-        try:
-            right_score = min([i for i in range(x + 1, self.width) if self.grid[y][i] >= curr]) - x
-        except ValueError:
-            right_score = self.width - x - 1
-        try:
-            top_score = y - max([j for j in range(y) if self.grid[j][x] >= curr])
-        except ValueError:
-            top_score = y
-        try:
-            bottom_score = min([j for j in range(y + 1, self.height) if self.grid[j][x] >= curr]) - y
-        except ValueError:
-            bottom_score = self.height - y - 1
+
+        # defaults account for case where all trees in a direction are shorter than curr        
+        left_score = x - max([i for i in range(x) if self.grid[y][i] >= curr], default=0)
+        right_score = min([i for i in range(x + 1, self.width) if self.grid[y][i] >= curr], default=self.width - 1 ) - x
+        top_score = y - max([j for j in range(y) if self.grid[j][x] >= curr], default=0)
+        bottom_score = min([j for j in range(y + 1, self.height) if self.grid[j][x] >= curr], default=self.height - 1) - y
 
         return left_score * right_score * top_score * bottom_score
 
