@@ -31,7 +31,7 @@ def get_new_follow_pos(lead_pos, follow_pos):
 
 def do_instr(instr, knots_pos):
     for _ in range(instr[1]):
-        knots_pos[0].append(_add(knots_pos[0][-1], dirs[instr[0]]))  # move head
+        knots_pos[0].append(_add(knots_pos[0][-1], dirs[instr[0]]))  # move heads
         for i in range(1, len(knots_pos)):
             knots_pos[i].append(get_new_follow_pos(knots_pos[i - 1], knots_pos[i]))
 
