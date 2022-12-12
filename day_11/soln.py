@@ -54,14 +54,10 @@ class Game:
         self.modulus = math.prod(m.test_divisor for m in monkeys)
 
     def monkey_turn(self, m, p2=False):
-
         for item in m.items:
             item = (m.operation(item) if p2 else m.operation(item) // 3) % self.modulus
-
             tgt_label = m.true_target if m.test(item) else m.false_target
-
             self.monkeys[tgt_label].items.append(item)
-
             m.items_inspected += 1
 
         m.items.clear()
