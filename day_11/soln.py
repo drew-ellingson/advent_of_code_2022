@@ -47,9 +47,6 @@ false_target: {self.false_target}\n"""
         return label, items, operation, test_divisor, test, true_target, false_target
 
 
-# with open("input2.txt") as my_file:
-#     p2_monkeys = [Monkey(m) for m in my_file.read().split("\n\n")]
-#     p2_rounds = 10000
 class Game:
     def __init__(self, monkeys, rounds):
         self.monkeys = monkeys
