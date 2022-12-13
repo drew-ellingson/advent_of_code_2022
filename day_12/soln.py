@@ -3,7 +3,6 @@ from collections import namedtuple
 
 class GraphMatrix:
     def __init__(self, h, w, vals):
-
         self.h = h
         self.w = w
         self.vals = vals
@@ -54,7 +53,7 @@ def path_costs(graph, start, end):
         try:
             curr = queue.pop(0)
         except:
-            return len(graph.vals)  # safe upper bound
+            return len(graph.vals)  # safe upper bound if path not completeable
 
         if not visited[curr.tgt]:
             visited[curr.tgt] = True
@@ -70,27 +69,27 @@ def path_costs(graph, start, end):
     return costs[end]
 
 
-with open("input.txt") as my_file:
-    raw_matrix = my_file.read()
-
-    # gonna write over these with heights, so want to keep a record
-    start = raw_matrix.replace("\n", "").index("S")
-    end = raw_matrix.replace("\n", "").index("E")
-
-
 def parse_raw_matrix(raw_matrix):
     h = len(raw_matrix.split("\n"))
     w = len(raw_matrix.split("\n")[0])
+
+    start = raw_matrix.replace("\n", "").index("S")
+    end = raw_matrix.replace("\n", "").index("E")
 
     # flatten
     vals = [val for row in raw_matrix.replace("\n", "") for val in row]
     vals[vals.index("S")], vals[vals.index("E")] = "a", "z"
     vals = [ord(val) - 97 for val in vals]
 
-    return h, w, vals
+    return h, w, start, end, vals
 
 
-graph = GraphMatrix(*parse_raw_matrix(raw_matrix))
+with open("input.txt") as my_file:
+    raw_matrix = my_file.read()
+
+h, w, start, end, vals = parse_raw_matrix(raw_matrix)
+
+graph = GraphMatrix(h, w, vals)
 p1_cost = path_costs(graph, start, end)
 print(f"P1 Soln is: {p1_cost}")
 
