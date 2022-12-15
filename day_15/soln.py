@@ -1,5 +1,4 @@
 import re
-from collections import namedtuple
 
 
 def _add(tup1, tup2):
@@ -19,8 +18,8 @@ def _mag(tup1):  # manhattan
 
 
 def _min_cover(intervals):
-    """takes a list of overlapping closed intervals and
-    provides a minimum set of equivalent intervals
+    """takes a list of overlapping closed intervals (as tuples) and
+    provides a minimum disjoint set of equivalent intervals
     """
     min_cover = []
     intervals = [x for x in intervals if x[1] > x[0]]  # omit bogus
