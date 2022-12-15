@@ -22,7 +22,7 @@ def _min_cover(intervals):
     provides a minimum disjoint set of equivalent intervals
     """
     min_cover = []
-    intervals = [x for x in intervals if x[1] > x[0]]  # omit bogus
+    intervals = [x for x in intervals if x[1] >= x[0]]  # omit bogus
 
     for begin, end in sorted(intervals):
         if min_cover and min_cover[-1][1] >= begin:
