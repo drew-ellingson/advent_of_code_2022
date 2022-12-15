@@ -19,17 +19,17 @@ def _mag(tup1):  # manhattan
 
 def _min_cover(intervals):
     """takes a list of overlapping closed intervals (as tuples) and
-    provides a minimum disjoint set of equivalent intervals
+    returns a minimum list of equivalent disjoint intervals
     """
-    min_cover = []
+    cover = []
     intervals = [x for x in intervals if x[1] >= x[0]]  # omit bogus
 
-    for begin, end in sorted(intervals):
-        if min_cover and min_cover[-1][1] >= begin:
-            min_cover[-1] = (min_cover[-1][0], max(min_cover[-1][1], end))
+    for s, e in sorted(intervals):
+        if cover and cover[-1][1] >= s:
+            cover[-1] = (cover[-1][0], max(cover[-1][1], e))
         else:
-            min_cover.append((begin, end))
-    return min_cover
+            cover.append((s, e))
+    return cover
 
 
 class Sensor:
